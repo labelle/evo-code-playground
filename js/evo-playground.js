@@ -12,8 +12,8 @@ $(document).ready(function() {
 
         $.get("./src/js/index.txt", function(response) {
           js = response;
-          $.getScript("./src/js/index.txt");
           $('#box3 pre').text(response);
+          $.getScript("./src/js/index.txt");
         });
 
       });
@@ -22,28 +22,42 @@ $(document).ready(function() {
 
   $(document).on('keyup','#box1 pre',function(){
     console.log("edit me edit");
-
-    // delay
     $(this).parseMe();
+  });
+
+  $(document).on('keyup','#box2 pre',function(){
+    console.log("edit me edit");
+    $(this).parseMe();
+  });
+
+  $(document).on('keyup','#box3 pre',function(){
+    $(this).parseMe();
+    console.log("edit me edit");
 
   });
+
 
 $.fn.parseMe = function () {
 
   var html = $('#box1 pre').html();
   var css = $('#box2 pre').html();
-  var js = $('#box3 pre').val();
+  var js = $('#box3 pre').html();
 
-  $('#box4').html('<div id="stage">'+decodeEntities(html)+' </div>');
-  $('#box4 div').append('<style>'+decodeEntities(css)+'</style>');
-  //$.getScript(js);
-
+  $('#box4').html('<div id="stage">'+$(this).decodeEntities(html)+' </div>');
+  $('#box4 div').append('<style>'+$(this).decodeEntities(css)+'</style>');
+  $(this).runScript(js);
 };
 
-function decodeEntities(encodedString) {
+$.fn.decodeEntities = function (encodedString) {
     var textArea = document.createElement('textarea');
     textArea.innerHTML = encodedString;
     return textArea.value;
+};
+
+$.fn.runScript = function (theInstructions) {
+  console.log("called this");
+  var F=new Function (theInstructions);
+  return(F());
 }
 
 $(this).parseMe();
