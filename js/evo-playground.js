@@ -1,18 +1,18 @@
 $(document).ready(function() {
 
-  $.get("./tbl/html/index.html", function(response) {
+  $.get("./src/html/index.html", function(response) {
       html = response;
       $('#box1 pre').text(response);
       $('#box4').html('<div id="stage">'+html+'</div>');
 
-      $.get("./tbl/css/index.css", function(response) {
+      $.get("./src/css/index.css", function(response) {
         css = response;
         $('#box2 pre').text(response);
         $('#box4 div').append('<style>'+response+'</style>');
 
-        $.get("./tbl/js/index.txt", function(response) {
+        $.get("./src/js/index.txt", function(response) {
           js = response;
-          $.getScript("./tbl/js/index.txt");
+          $.getScript("./src/js/index.txt");
           $('#box3 pre').text(response);
         });
 
