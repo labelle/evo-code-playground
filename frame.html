@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+    <title>Test Page</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+
+    <div id="box1" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
+    <div id="box2" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
+    <div id="box3" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
+    <div style="clear:both;"></div>
+    <div id="box4" style="width:90%; height:550px; border:1px solid #ccc; float:left;"></div>
+
+  </body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  $.get("./tbl/html/index.html", function(response) {
+      html = response;
+      $('#box1 pre').text(response);
+      $('#box4').html('<div id="stage">'+html+'</div>');
+
+      $.get("./tbl/css/index.css", function(response) {
+        css = response;
+        $('#box2 pre').text(response);
+        $('#box4 div').append('<style>'+response+'</style>');
+
+        $.get("./tbl/js/index.txt", function(response) {
+          js = response;
+          $.getScript("./tbl/js/index.txt");
+          $('#box3 pre').text(response);
+        });
+
+      });
+
+  });
+
+  $(document).on('keyup','#box1 pre',function(){
+    console.log("edit me edit");
+
+    // delay
+    $(this).parseMe();
+
+  });
+
+$.fn.parseMe = function () {
+
+  var html = $('#box1 pre').html();
+  var css = $('#box2 pre').html();
+  var js = $('#box3 pre').val();
+
+  $('#box4').html('<div id="stage">'+decodeEntities(html)+' </div>');
+  $('#box4 div').append('<style>'+decodeEntities(css)+'</style>');
+  //$.getScript(js);
+
+};
+
+function decodeEntities(encodedString) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = encodedString;
+    return textArea.value;
+}
+
+$(this).parseMe();
+
+
+});
+</script>
+</html>
