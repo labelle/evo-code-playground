@@ -5,15 +5,43 @@
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
     <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
     <title>Test Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/normalize.css">
   </head>
   <body>
+    <div class="playground">
+      <div class="boxes">
+        <div class="box-edit">
+          <div id="box1" class="box">
+            <div class="bar">HTML</div>
+            <div class="code-block">
+              <pre contenteditable="true"></pre>
+            </div>
+          </div>
+          <div id="box2" class="box">
+            <div class="bar">CSS</div>
+            <div class="code-block">
+              <pre contenteditable="true"></pre>
+            </div>
+          </div>
+          <div id="box3" class="box">
+            <div class="bar">JS</div>
+            <div class="code-block">
+              <pre contenteditable="true"></pre>
+            </div>
+          </div>
+        </div>
 
-    <div id="box1" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
-    <div id="box2" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
-    <div id="box3" style="width:30%; height:350px; border:1px solid #ccc; float:left;"><pre contenteditable="true"></pre></div>
-    <div style="clear:both;"></div>
-    <div id="box4" style="width:90%; height:550px; border:1px solid #ccc; float:left;"></div>
+        <div class="box-output">
+          <div id="box4" class="results"></div>
+        </div>
 
+      </div>
+
+    </div>
   </body>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
