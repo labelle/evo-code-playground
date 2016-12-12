@@ -2,12 +2,49 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="pragma" content="no-cache" />
-    <title>Load iFrame Test</title>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+    <title>Test Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/normalize.css">
   </head>
   <body>
+    <div class="playground">
+      <div class="boxes">
+        <div class="box-edit">
+          <div id="box1" class="box">
+            <div class="bar">HTML</div>
+            <div class="code-block">
+              <textarea id="code-block-html"></textarea>
+            </div>
+          </div>
+          <div id="box2" class="box">
+            <div class="bar">CSS</div>
+            <div class="code-block">
+              <textarea id="code-block-css"></textarea>
+            </div>
+          </div>
+          <div id="box3" class="box">
+            <div class="bar">JS</div>
+            <div class="code-block">
+              <textarea id="code-block-js"></textarea>
+            </div>
+          </div>
+        </div>
 
-    <iframe src="./frame.html" width="100%" height="750"></iframe>
+        <div class="box-output">
+          <div id="box4" class="results"></div>
+        </div>
 
+      </div>
+
+    </div>
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="./js/evo-playground.js"></script>
+
 </html>

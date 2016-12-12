@@ -1,18 +1,25 @@
 $(document).ready(function() {
 
+  var htmlSrc = '#code-block-html';
+  var cssSrc = '#code-block-css';
+  var jsSrc = '#code-block-js';
+
+  // 1. initial load of html assets
   $.get("./src/html/index.html", function(response) {
       html = response;
-      $('#box1 pre').text(response);
-      $('#box4').html('<div id="stage">'+html+'</div>');
+      $(htmlSrc).html(response);
+      $('#box4').html('<div id="stage">' + html + '</div>');
 
+      // 2. css asset load load
       $.get("./src/css/index.css", function(response) {
         css = response;
-        $('#box2 pre').text(response);
+        $(cssSrc).html(response);
         $('#box4 div').append('<style>'+response+'</style>');
 
+        // 3. js asset load: note we have to use .txt extension
         $.get("./src/js/index.txt", function(response) {
           js = response;
-          $('#box3 pre').text(response);
+          $(jsSrc).text(response);
           $.getScript("./src/js/index.txt");
         });
 
@@ -20,38 +27,27 @@ $(document).ready(function() {
 
   });
 
-  $(document).on('keyup','#box1 pre',function(){
-    console.log("edit me edit");
+  $(document).on('keyup', htmlSrc,function(){
     $(this).parseMe();
   });
 
-  $(document).on('keyup','#box2 pre',function(){
-    console.log("edit me edit");
+  $(document).on('keyup', cssSrc,function(){
     $(this).parseMe();
   });
 
-  $(document).on('keyup','#box3 pre',function(){
+  $(document).on('keyup', jsSrc,function(){
     $(this).parseMe();
-    console.log("edit me edit");
-
   });
-
 
 $.fn.parseMe = function () {
 
-  var html = $('#box1 pre').html();
-  var css = $('#box2 pre').html();
-  var js = $('#box3 pre').html();
+  var html = $(htmlSrc).val();
+  var css = $(cssSrc).val();
+  var js = $(jsSrc).val();
 
-  $('#box4').html('<div id="stage">'+$(this).decodeEntities(html)+' </div>');
-  $('#box4 div').append('<style>'+$(this).decodeEntities(css)+'</style>');
+  $('#box4').html('<div id="stage">'+ html +' </div>');
+  $('#box4 div').append('<style>'+ css +'</style>');
   $(this).runScript(js);
-};
-
-$.fn.decodeEntities = function (encodedString) {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = encodedString;
-    return textArea.value;
 };
 
 $.fn.runScript = function (theInstructions) {
