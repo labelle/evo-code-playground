@@ -27,18 +27,22 @@ $(document).ready(function() {
 
   });
 
+  // Listening for a keyup in the html box
   $(document).on('keyup', htmlSrc,function(){
     $(this).parseMe();
   });
 
+  // Listening for a keyup in the css box
   $(document).on('keyup', cssSrc,function(){
     $(this).parseMe();
   });
 
+  // Listening for a keyup in the js box
   $(document).on('keyup', jsSrc,function(){
     $(this).parseMe();
   });
 
+// Creates the preview.  This runs when a keyup is detected in the functions above.
 $.fn.parseMe = function () {
 
   var html = $(htmlSrc).val();
@@ -50,6 +54,7 @@ $.fn.parseMe = function () {
   $(this).runScript(js);
 };
 
+// This functiong ets called at the end of the function above and is in charge of running the javascript.
 $.fn.runScript = function (theInstructions) {
   console.log("called this");
   var F=new Function (theInstructions);
