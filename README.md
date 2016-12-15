@@ -1,4 +1,4 @@
-# evo-codePlayground-static
+# evo-code-playground
 
 ##Summary
 A dependency free representation of the code playground.
