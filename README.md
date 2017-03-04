@@ -12,6 +12,7 @@ A dependency free representation of the code playground.
 * CSS
     * Include the stylesheets referenced in index.html (index.css, normalize.css) in the head of the page.
     * Set the correct pathways to the referenced stylesheets
+    * To change the default size of the top row, edit the following class combo in index.css (.playground .boxes .box-edit { )
 
 * Javascript
     * Include the javascript file referenced in index.html (evo-playground.js) in a script tag on the page.
