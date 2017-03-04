@@ -1,6 +1,28 @@
 $(document).ready(function() {
 
-  var htmlSrc = '#code-block-html';
+  
+
+var h = $('#handle'),
+    u = $('.box-edit'),
+    d = $('.box-output'),
+    ht = $('body').height() - 18;
+
+var isDragging = false;
+
+h.mousedown(function(e){
+    isDragging = true;
+    e.preventDefault();
+});
+$(document).mouseup(function(){
+    isDragging = false;
+}).mousemove(function(e){
+    if(isDragging){
+        u.css('height', e.pageY);
+        d.css('height', ht - e.pageY);
+    }
+});
+
+var htmlSrc = '#code-block-html';
   var cssSrc = '#code-block-css';
   var jsSrc = '#code-block-js';
 
