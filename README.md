@@ -8,8 +8,8 @@ A dependency free representation of the code playground.
 * HTML
     * Copy everything inside the body tags from index.html
     * Paste that into the html of the page.
-    * To just show the HTML box, comment out <div id="box2" class="box"> and <div id="box3" class="box"> then make <div id="box1" class="box width-full"> width: 100%
-    * Change the size of the 'code' text by adjusting the font-size in the <div class="code-block"> tags
+    * To just show the HTML box, comment out &lt;div id="box2" class="box"&gt; and &lt;div id="box3" class="box"&gt; then make &lt;div id="box1" class="box width-full"&gt; width: 100%
+    * Change the size of the 'code' text by adjusting the font-size in the &lt;div class="code-block"&gt; tags
 
 * CSS
     * Include the stylesheets referenced in index.html (index.css, normalize.css) in the head of the page.
